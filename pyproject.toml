@@ -8,8 +8,8 @@ readme = "README.md"
 packages = [{include = "peewee_enum_field"}]
 
 [tool.poetry.dependencies]
-python = "^3.11"
-peewee = "^3.17.0"
+python = "^3.9"
+peewee = "^3.15.0"
 
 [tool.poetry.group.dev]
 optional = true
