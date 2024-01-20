@@ -1,6 +1,8 @@
 from enum import Enum
-import peewee
 from typing import Any
+
+import peewee
+
 
 class EnumField(peewee.CharField):
     """
@@ -27,7 +29,6 @@ class EnumField(peewee.CharField):
         assert instance.color == Color.RED
     """
 
-
     def __init__(self, enum: type[Enum], *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
         if not issubclass(enum, Enum):
@@ -45,8 +46,9 @@ class EnumField(peewee.CharField):
         try:
             return self.enum[value]
         except KeyError as err:
-            raise peewee.IntegrityError(f"Value '{value}' is not a valid member name of '{self.enum.__name__}'") from err
-
+            raise peewee.IntegrityError(
+                f"Value '{value}' is not a valid member name of '{self.enum.__name__}'"
+            ) from err
 
     def __set__(self, instance: peewee.Model, value: Any):
         if value is not None and not isinstance(value, self.enum):
