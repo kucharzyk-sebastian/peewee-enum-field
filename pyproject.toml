@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "peewee-enum-field"
+version = "0.1.0"
+description = "A custom EnumField for Peewee ORM to handle Python Enum types."
+authors = ["Sebastian Kucharzyk <kucharzyk.sebastian@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "peewee_enum_field"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+peewee = "^3.17.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.4"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
