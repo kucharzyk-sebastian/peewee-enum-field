@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "peewee-enum-field"
-version = "0.1.0"
+version = "0.2.0"
 description = "A custom EnumField for Peewee ORM to handle Python Enum types."
 authors = ["Sebastian Kucharzyk <kucharzyk.sebastian@gmail.com>"]
 license = "MIT"
