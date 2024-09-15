@@ -13,7 +13,7 @@ class Color(Enum):
 
 
 class SampleModel(peewee.Model):
-    color = EnumField(Color)
+    color = EnumField(Color, null=True)
 
 
 @pytest.fixture(autouse=True)
@@ -25,6 +25,12 @@ def test_db(tmpdir):
     yield db
     db.drop_tables([SampleModel])
     db.close()
+
+
+def test_create_an_instance_with_none_enum_member():
+    model_instance = SampleModel.create(color=None)
+
+    assert model_instance.color is None
 
 
 def test_create_an_instance_with_valid_enum_member():

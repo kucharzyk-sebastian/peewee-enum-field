@@ -36,6 +36,8 @@ class EnumField(peewee.CharField):
         self.enum = enum
 
     def db_value(self, member: Enum) -> Any:
+        if member is None:
+            return None
         if not isinstance(member, self.enum):
             raise TypeError(f"Expected a member of {self.enum.__name__}, got {type(member).__name__}")
         return super().db_value(member.name)
@@ -52,5 +54,5 @@ class EnumField(peewee.CharField):
 
     def __set__(self, instance: peewee.Model, value: Any):
         if value is not None and not isinstance(value, self.enum):
-            raise TypeError(f"Expected a member of {self.enum.__name__}, got {type(value).__name__}")
+            raise TypeError(f"Expected a member of {self.enum.__name__} or None, got {type(value).__name__}")
         super().__set__(instance, value)
